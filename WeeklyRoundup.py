@@ -1,8 +1,3 @@
-#This Python program pulls the top albums, artists, and tracks captured by LastFM in the json format (run "pprint" for json taxonomy)
-#I put the data  in /var/www/Data/Music/WeeklyRoundup.txt with some HTML formatting so it can be embedded into an HTML file
-#you can put it anywhere (see first target open).
-#Runs on Python 2.6.6 and up on Python 2.* 
-
 import json
 import requests
 from sys import argv
