@@ -15,11 +15,19 @@ Example of the output, for my own account, can be found here: http://joabj.com/D
 Here are some of the supporting documents I used:
 
 https://pythonspot.com/en/json-encoding-and-decoding-with-python/
+
 http://www.last.fm/api/show/user.getWeeklyTrackChart
+
 http://www.last.fm/api/show/user.getWeeklyArtistChart
+
 http://www.last.fm/api/show/user.getWeeklyAlbumChart
+
 http://stackoverflow.com/questions/5141559/unicodeencodeerror-ascii-codec-cant-encode-character-u-xef-in-position-0
+
 http://stackoverflow.com/questions/3437059/does-python-have-a-string-contains-substring-method
+
 http://stackoverflow.com/questions/7361253/how-to-determine-whether-a-substring-is-in-a-different-string
+
 http://www.last.fm/api/show/user.getTopAlbums
+
 http://stackoverflow.com/questions/3437059/does-python-have-a-string-contains-substring-method
