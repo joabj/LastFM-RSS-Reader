@@ -1,25 +1,23 @@
 #This Python program pulls the top albums, artists, and tracks captured by LastFM in the json format (run "pprint" for json taxonomy)
 #I put the data  in /var/www/Data/Music/WeeklyRoundup.txt with some HTML formatting so it can be embedded into an HTML file
 #you can put it anywhere (see first target open).
-#Replace 'joab_jackson' with your own Last.FM user name
+#Runs on Python 2.6.6 and up on Python 2.* 
 
 import json
 import requests
 from sys import argv
 from pprint import pprint
-
-#The next task to do here is to pull this info from a separate Python Module.
-PersonalKey='xxxxx'
-user ='joab_jackson'
-target = open("/var/www/Data/Music/WeeklyRoundup.txt", 'w')
-
+#The small library with the enviornmental settings...
+import Environs
 
 #Some API boilerplate we'll need soon
 RequestPrefix='http://ws.audioscrobbler.com/2.0/?method='
-RequestServiceUser='&user=' + user
-RequestPersonalKey='&api_key='+ PersonalKey
+RequestServiceUser='&user=' + Environs.User
+RequestPersonalKey='&api_key='+ Environs.PersonalKey
 RequestSuffix='&format=json'
 
+#Open File for writing (Set in Environs library)
+target = open(Environs.WriteFile, 'w')
 
 #Artists
 RequestService='user.getweeklyartistchart'
@@ -41,7 +39,6 @@ while x < 10:
 	Number = "<tr><td>#" + str(ChartPlacement) + "   </div></td>"
 	ArtistNameString = "<td><div class=\"album\"><b>" + ArtistName + "</b></div></td>"
 	ArtistPlaycountString = "<td><div class=\"Playcount\">" + ArtistPlaycount + "</div></td></tr>"
-	
 	
 	target.write(Number)
 	target.write(ArtistNameString)
@@ -110,14 +107,12 @@ while x < 10:
 	TrackName =  data[u'weeklytrackchart'][u'track'][x][u'name']
 	TrackArtist =  data[u'weeklytrackchart'][u'track'][x][u'artist'][u'#text']
 	TrackPlaycount = data[u'weeklytrackchart'][u'track'][x][u'playcount']
-
 		
 	Number = "<tr><td>#" + str(ChartPlacement) + "   </div></td>"
 	AlbumNameString = "<td><div class=\"album\"><b>" + TrackName + "</b></div></td>"
 	AlbumArtistString = "<td><div class=\"artist\">" + TrackArtist + "</div></td>"
 	AlbumPlaycountString = "<td><div class=\"Playcount\">" + TrackPlaycount + "</div></td></tr>"
-	
-	
+
 	target.write(Number)
 	target.write(AlbumNameString)
 	target.write("\n")
@@ -133,6 +128,7 @@ while x < 10:
 target.write("</table></center>")	
 target.write("<img id=ImageCenter src=/Tilde-Color.jpg  height=27 width=60><p>")	
 	
+
 target.close()
 
 #For printing the JSON taxonomy
