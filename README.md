@@ -1,14 +1,10 @@
 # LastFM-RSS-Reader
-This is Python program that parses the RSS feed from Last.FM for personal music stats
 
-This Python program pulls the top albums, artists, and tracks captured by LastFM RSS feed in the json format 
-(run "pprint" for json taxonomy). The program puts the data  in a blank "WeeklyRoundup.txt" file with some HTML 
-formatting so it can be embedded into an HTML file
+This is a Python program that parses the RSS feed from Last.FM for personal music stats. It pulls the top albums, artists, and tracks captured by LastFM RSS feed in the json format  (run "pprint" for json taxonomy). The program puts the data in a blank "WeeklyRoundup.txt" file with some HTML formatting so it can be embedded into an HTML file.
 
 It runs on Python 2.6.6 and up on Python 2.* 
 
-The main program requires the Environs.py library of environmental variables (a blank template is included here), 
-or create your own more secure way of bringing in variables
+The main program ("WeeklyRounup.py") requires the Environs.py library of environmental variables (a blank template is included here), or you can create your own more secure way of bringing in variables
 
 Example of the output, for my own account, can be found here: http://joabj.com/Data/Music/WeeklyRoundup.html
 
