@@ -1,0 +1,23 @@
+
+<br>
+<a href=/Data/Music/WeeklyRoundup/>Previous Weeks</a>
+<p>
+<a href=/Data/Music>All the Music Stats</a>
+<p>
+<a href=https://github.com/joabj/LastFM-RSS-Reader>Code</a>
+<p>
+<a href=https://www.last.fm/user/joab_jackson>Data</a>
+</p>	
+</center>
+<br>
+<a href=/Photos/2012/1209-SA-Bushwick-Boombox.html>
+<img id=StoryPhotoCenter src=/Photos/2012/1209-SA-Bushwick-Boombox.jpg width=225 height=225 alt="Boombox"></a>
+<pre>
+		
+		
+</pre>	
+</div>	
+<!--#include virtual="/SiteStyle/Footer.txt"-->
+</body>
+<!--Handcrafted, for better or worse, by Joab Jackson, unless otherwise annotated-->
+</html>

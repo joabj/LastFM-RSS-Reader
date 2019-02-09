@@ -1,0 +1,51 @@
+<!doctype html>
+<head>
+		<Title>Soundtrack of My Life</Title>
+
+			<!--OpenGraph stuff-->		
+		<meta property="og:title" content="Music that I, Joab Jackson, have recently listened to" />
+		<meta property="og:site_name" content="Joab Jackson, Web site"/>
+		<meta property="og:image" content="http://www.joabj.com/Photos/2012/1209-SA-Bushwick-Boombox.jpg" />
+		<meta property="og:description" content="Music Joab Jackson listened to last week"/>
+		<meta property="og:type" content="Useless data" />
+		<meta property="og:locale" content="en_US" /> 
+		<meta property="article:author" content="Joab Jackson" />
+		<meta property="article:publisher" content="http://www.joabj.com" />
+			
+		<!--Title and menu fonts from Google Font Service-->
+		<link href='http://fonts.googleapis.com/css?family=Audiowide|Orbitron:400,500,700,900' rel='stylesheet' type='text/css'>
+		<link rel="shortcut icon" href="/Favicon.ico" /><!--For IE-->
+		<style type="text/css">
+		    @import url(/SiteStyle/Index.css);
+			@import url(/SiteStyle/Table.css);
+			@import url(/SiteStyle/Story.css);
+			
+			
+		.chart div {
+				font: 10px sans-serif;
+				background-color: steelblue;
+				text-align: right;
+				padding: 3px;
+				margin: 1px;
+				color: white;
+				max-width:500px;
+				}
+			
+			
+	
+		</style>
+</head>
+<!--#include virtual="/SiteStyle/Header.txt"-->
+<!--#include virtual="/SiteStyle/Banner.txt"-->
+	<h2>Data</h2>			
+	</div>
+<!--Content Well will go here-->
+
+
+<div id="entry">
+		<link href='http://fonts.googleapis.com/css?family=Fenix' rel='stylesheet' type='text/css'>
+		<hed>Soundtrack of My Life, the week ending ${TopDate}</hed></br>
+		<br>
+	
+	
+
