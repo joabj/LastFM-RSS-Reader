@@ -1,7 +1,7 @@
 #This program pulls the top albums, artists and tracks captured by LastFM in the json format (run "pprint" for json taxonomy)
 #It requires the WeeklyRoundup.html file to complete the formatting.
 
-import datetime
+#import datetime --for archiving see below
 import json
 import requests
 from sys import argv
@@ -28,7 +28,7 @@ response = requests.get(AssembledRequest)
 data = response.json()
 x = 0
 ChartPlacement = 1 
-
+target.write("<center>")
 target.write("<h3>Top Artists</h3>")
 target.write("<table><tr><th><b>#</b></th><th>Artist</th><th>Tracks Played</th></tr>")
 
@@ -38,7 +38,7 @@ while x < 10:
 		
 	Number = "<tr><td>#" + str(ChartPlacement) + "   </div></td>"
 	ArtistNameString = "<td><div class=\"album\"><b>" + ArtistName + "</b></div></td>"
-	ArtistPlaycountString = "<td><div class=\"Playcount\">" + ArtistPlaycount + "</div></td></tr>"
+	ArtistPlaycountString = "<td align=\"right\"><div class=\"Playcount\">" + str(ArtistPlaycount) + "</div></td></tr>"
 	
 	
 	target.write(Number)
@@ -52,7 +52,7 @@ while x < 10:
 	x = x + 1 
 
 target.write("</table>")
-target.write("<img id=ImageCenter src=/Tilde-Color.jpg  height=27 width=60><p>")	
+target.write("<br><img id=ImageCenter src=/Tilde-Color.jpg  height=27 width=60><p><br>")	
 
 #Weekly Album ChartPlacement
 RequestService='user.getweeklyalbumchart'
@@ -91,7 +91,7 @@ while x < 10:
 	x = x + 1 
 
 target.write("</table>")
-target.write("<img id=ImageCenter src=/Tilde-Color.jpg  height=27 width=60><p>")	
+target.write("<br><img id=ImageCenter src=/Tilde-Color.jpg  height=27 width=60><br>")	
 
 #Top 5 Tracks
 RequestService='user.getweeklytrackchart'
@@ -113,7 +113,7 @@ while x < 5:
 	Number = "<tr><td>#" + str(ChartPlacement) + "   </div></td>"
 	AlbumNameString = "<td><div class=\"album\"><b>" + TrackName + "</b></div></td>"
 	AlbumArtistString = "<td><div class=\"artist\">" + TrackArtist + "</div></td>"
-	AlbumPlaycountString = "<td><div class=\"Playcount\">" + TrackPlaycount + "</div></td></tr>"
+	AlbumPlaycountString = "<td align=\"right\"><div class=\"Playcount\">" + str(TrackPlaycount) + "</div></td></tr>"
 	
 	
 	target.write(Number)
@@ -128,10 +128,18 @@ while x < 5:
 	ChartPlacement = ChartPlacement + 1
 	x = x + 1 
 
-target.write("</table></center>")	
-target.write("<img id=ImageCenter src=/Tilde-Color.jpg  height=27 width=60><p>")	
+target.write("</table>")	
+target.write("<br><img id=ImageCenter src=/Tilde-Color.jpg  height=27 width=60><br>")	
 target.close()
 
+#Archiving this entry, as a text file under today's date 
+#obsolete
+#Today's date:
+#CurrentDate = str(datetime.datetime.date(datetime.datetime.now()))
+#The archive file name is based on today's date:
+#ArchiveFile =  Environs.WriteFileArchiveLocation + CurrentDate + ".html"
+#Stopping here
+#print ArchiveFile 
 
 
 
