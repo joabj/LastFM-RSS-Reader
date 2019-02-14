@@ -26,14 +26,16 @@ FilledTemplateOpening =(TemplateOpening.render(TopDate=TopDate))
 #Write data to the file created
 f.write(FilledTemplateOpening)
 
-#Opens Notes (If Any)
+#Opens and reads Notes (If Any)
 fNotes= open("/var/www/Data/Music/code/WeeklyRoundup/WeeklyMusicNotes.txt", "r")
-
-#Reads Weekly Roundup
 Notes =fNotes.read()
-
-#Write data to the file created
 f.write(Notes)
+fNotes.close()
+
+#Resets the fNotes file
+fNotes= open("/var/www/Data/Music/code/WeeklyRoundup/WeeklyMusicNotes.txt", "w")
+fNotes.write("<!--Uncomment below to add notes<br><b>Notes:</b>-->")
+fNotes.close
 
 #Opens Weekly Roundup (Compiled by another program)
 f2= open("/var/www/Data/Music/WeeklyRoundup.txt", "r")
@@ -45,14 +47,15 @@ Content =f2.read()
 f.write(Content)
 f2.close()
 
-#Opens Multimedia Adds (If Any)
+#Opens and reads in Multimedia Adds (If Any)
 fMultiMedia= open("/var/www/Data/Music/code/WeeklyRoundup/WeeklyMusicMultimediaAdds.txt", "r")
-
-#Reads Weekly Roundup
 MultiMedia =fMultiMedia.read()
-
-#Write data to the file created
 f.write(MultiMedia)
+fMultiMedia.close()
+#Resets the fNotes file
+fMultiMedia= open("/var/www/Data/Music/code/WeeklyRoundup/WeeklyMusicMultimediaAdds.txt", "w")
+fMultiMedia.write("<!--Uncomment below to add notes<br><b>Multimedia:</b>-->")
+fMultiMedia.close()
 
 
 #Opens "Template Closing"
