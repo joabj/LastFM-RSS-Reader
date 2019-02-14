@@ -2,6 +2,11 @@ import os.path
 import time
 from mako.template import Template
 
+#This program assembles the final page for the weekly top music round-up. Using Mako, it first reads the opening template, then
+#a file with notes (if any), the weekly roundup (created by WeeklyRoundup.py), then a file for any multimedia adds (Instagram, Twitter etc)
+#Then finally the closing template. It then creates a unique filename for the current week. 
+
+
 ## dd-mm-yyyy format
 dated = time.strftime("Tops-%Y-%m-%d.html")
 TopDate = time.strftime("%B %d, %Y")
@@ -9,14 +14,26 @@ TopDate = time.strftime("%B %d, %Y")
 #Creates a new File:
 f= open("/var/www/Data/Music/WeeklyRoundup/"+dated,"w+")
 
+#The name of file
+NewWeeklyReport = "/Data/Music/WeeklyRoundup/"+dated
+
 #Set the template file to a variable
-TemplateOpening = Template(filename='Template-Opening.txt')
+TemplateOpening = Template(filename='/var/www/Data/Music/code/WeeklyRoundup/Template-Opening.txt')
 
 #Fill in the variables
 FilledTemplateOpening =(TemplateOpening.render(TopDate=TopDate))
 
 #Write data to the file created
 f.write(FilledTemplateOpening)
+
+#Opens Notes (If Any)
+fNotes= open("/var/www/Data/Music/code/WeeklyRoundup/WeeklyMusicNotes.txt", "r")
+
+#Reads Weekly Roundup
+Notes =fNotes.read()
+
+#Write data to the file created
+f.write(Notes)
 
 #Opens Weekly Roundup (Compiled by another program)
 f2= open("/var/www/Data/Music/WeeklyRoundup.txt", "r")
@@ -28,8 +45,18 @@ Content =f2.read()
 f.write(Content)
 f2.close()
 
+#Opens Multimedia Adds (If Any)
+fMultiMedia= open("/var/www/Data/Music/code/WeeklyRoundup/WeeklyMusicMultimediaAdds.txt", "r")
+
+#Reads Weekly Roundup
+MultiMedia =fMultiMedia.read()
+
+#Write data to the file created
+f.write(MultiMedia)
+
+
 #Opens "Template Closing"
-TemplateClosing =open("Template-Closing.txt", "r")
+TemplateClosing =open("/var/www/Data/Music/code/WeeklyRoundup/Template-Closing.txt", "r")
 
 #Reads Weekly Roundup
 Content =TemplateClosing.read()
@@ -39,6 +66,20 @@ f.write(Content)
 
 #Closes Final files
 f.close()
+
+#Now to add to the index. Open the weekly index
+OldIndex=open("/var/www/Data/Music/WeeklyRoundup/WeeklyRoundupArchive.txt", "r")
+ 
+ #Reads Weekly Roundup
+ContentIndex=OldIndex.read()
+OldIndex.close()
+
+#Writes in the new week
+BigIndex=open("/var/www/Data/Music/WeeklyRoundup/WeeklyRoundupArchive.txt", "w")
+BigIndex.write("<tr><td><a href="+dated+">"+TopDate+"</a></td></tr>")
+BigIndex.write("\r\n")
+BigIndex.write(ContentIndex)
+BigIndex.close()
 
 		
 #https://www.guru99.com/reading-and-writing-files-in-python.html
